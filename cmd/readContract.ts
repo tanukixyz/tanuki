@@ -5,9 +5,9 @@ import { BasicCommand } from './basic';
 import { Reporter } from './reporter';
 import ERC20 from '../core/abi/ERC20.json';
 
-class ContractCommand extends BasicCommand {
-  public readonly name: string = 'query';
-  public readonly describe: string = 'Query contract data';
+class ReadContractCommand extends BasicCommand {
+  public readonly name: string = 'readcontract';
+  public readonly describe: string = 'Read contract data';
 
   constructor() {
     super();
@@ -32,7 +32,7 @@ class ContractCommand extends BasicCommand {
       process.exit(0);
     }
 
-    const abi = ContractCommand.readAbi(argv.abi);
+    const abi = ReadContractCommand.readAbi(argv.abi);
     const contract = provider.getContractAt(abi, argv.address);
 
     if (argv.blockNumber > 0) {
@@ -76,4 +76,4 @@ class ContractCommand extends BasicCommand {
   }
 }
 
-export default ContractCommand;
+export default ReadContractCommand;
